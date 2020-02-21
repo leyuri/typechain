@@ -9,5 +9,11 @@
   "scripts": {
     "start": "node index.js",
     "prestart": "tsc"
+  },
+  "devDependencies": {
+    "tsc-watch": "^4.1.0"
+  },
+  "dependencies": {
+    "typescript": "^3.8.2"
   }
 }
