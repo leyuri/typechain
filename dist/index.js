@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class Human {
-    constructor(name, age, gender) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
+class Block {
+    constructor(index, hash, previousHash, data, timestamp) {
+        this.index = index;
+        this.hash = hash;
+        this.previousHash = previousHash;
+        this.data = data;
+        this.timestamp = timestamp;
     }
 }
-const lynn = new Human("Lynn", 18, "female");
-const sayHi = (person) => {
-    return (`hello ${person.name}, you are ${person.age}, you are a ${person.gender}`);
-};
-console.log(sayHi(lynn));
+const genesisBlock = new Block(0, "202323423242323", "", "Hello", 123456);
+let blockchain = [genesisBlock];
+console.log(blockchain);
 //# sourceMappingURL=index.js.map
