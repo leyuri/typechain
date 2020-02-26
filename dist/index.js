@@ -10,12 +10,19 @@ class Block {
         this.timestamp = timestamp;
     }
 }
-//when i want to create a method that i can use without creating blocks
 Block.calculateBlockHash = (index, previousHash, timestamp, data) => CryptoJS.SHA256(index + previousHash + timestamp + data).toString();
 const genesisBlock = new Block(0, "202323423242323", "", "Hello", 123456);
 let blockchain = [genesisBlock];
 const getBlockchain = () => blockchain;
 const getLatestBlock = () => blockchain[blockchain.length - 1];
 const getNewTimeStamp = () => Math.round(new Date().getTime() / 1000);
-console.log(blockchain);
+const createNewBlock = (data) => {
+    const previosBlock = getLatestBlock();
+    const newIndex = previosBlock.index + 1;
+    const newTimestamp = getNewTimeStamp();
+    const newHash = Block.calculateBlockHash(newIndex, previosBlock.hash, newTimestamp, data);
+    const newBlock = new Block(newIndex, newHash, previosBlock.hash, data, newTimestamp);
+    return newBlock;
+};
+console.log(createNewBlock("hello"), createNewBlock("bye bye"));
 //# sourceMappingURL=index.js.map
